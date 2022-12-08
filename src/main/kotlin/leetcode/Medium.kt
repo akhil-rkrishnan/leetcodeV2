@@ -1,20 +1,18 @@
 package leetcode
 
 import java.math.BigInteger
+import kotlin.random.Random
 import kotlin.system.measureTimeMillis
 
 fun main() {
     val measureTimeInMillis = measureTimeMillis {
-        searchInRotatedSortArray(
-            intArrayOf(
-                55,
-                56,
-                57,
-                58,
-                59,
-                60,
-            ), 60
-        ).println()
+        combinationSum2(intArrayOf(/*10, 1, 2, 7, 6, 1, 5*/).let {
+            var arr = IntArray(100)
+            repeat(100) {
+                arr[it] = (1..10).random()
+            }
+            arr
+        }, 8).toList().println()
     }
     "Total time taken $measureTimeInMillis".println()
 
@@ -22,29 +20,25 @@ fun main() {
 
 fun combinationSum2(candidates: IntArray, target: Int): List<List<Int>> {
     val mainList = arrayListOf<ArrayList<Int>>()
-    when (candidates.size) {
-        0 -> return arrayListOf()
-        1 -> if (candidates.first() == target) return arrayListOf(listOf(target))
-        2 -> {
-            if (candidates.first() == target || candidates.last() == target) {
-                mainList.add(arrayListOf(1))
-            }
-            if (candidates.sum() == target) {
-                mainList.add(arrayListOf(candidates.first(),candidates.last()))
-            }
-            return mainList
-        }
-    }
     candidates.sort()
-    var currentIndex = 0
-    while (currentIndex < candidates.size) {
-        if (candidates.get(currentIndex) > target) {
-            return mainList
-        }
-        var nextIndex = currentIndex + 1
+    findCombination(candidates, target, 0, mainList, arrayListOf())
+    return mainList
+}
 
+fun findCombination(candidates: IntArray, target: Int, start: Int, mainList: ArrayList<ArrayList<Int>>, temp: ArrayList<Int>) {
+    if (target < 0) {
+        return
+    } else if (target == 0) {
+        mainList.add(ArrayList(temp))
+    } else {
+        for (i in start until candidates.size) {
+            if (candidates[i] > target) break;
+            if (i > start && candidates[i] == candidates[i - 1]) continue
+            temp.add(candidates[i])
+            findCombination(candidates, target - candidates[i], i + 1, mainList, temp)
+            temp.removeAt(temp.size - 1)
+        }
     }
- return mainList
 }
 
 
@@ -58,19 +52,19 @@ fun multiply(num1: String, num2: String): String {
 fun searchRange(nums: IntArray, target: Int): IntArray {
     val list = arrayListOf<Int>()
     if (nums.isEmpty()) {
-        return intArrayOf(-1,-1)
+        return intArrayOf(-1, -1)
     }
     if (nums.size == 1) {
-         if (nums.first() == target) {
-             return intArrayOf(0,-1)
-         }
+        if (nums.first() == target) {
+            return intArrayOf(0, -1)
+        }
     }
     val intArray = IntArray(2)
     searchInRange(nums, target, intArray, 0, nums.size - 1)
     return intArray
 }
 
-fun searchInRange(nums: IntArray, target: Int, indexArray: IntArray, start: Int,end: Int) {
+fun searchInRange(nums: IntArray, target: Int, indexArray: IntArray, start: Int, end: Int) {
 
 }
 
