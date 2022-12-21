@@ -1,20 +1,17 @@
 package leetcode
 
 import java.math.BigInteger
-import kotlin.random.Random
 import kotlin.system.measureTimeMillis
 
 fun main() {
     val measureTimeInMillis = measureTimeMillis {
-        combinationSum2(intArrayOf(/*10, 1, 2, 7, 6, 1, 5*/).let {
-            var arr = IntArray(100)
-            repeat(100) {
-                arr[it] = (1..10).random()
-            }
-            arr
-        }, 8).toList().println()
+        //rotateImage()
     }
     "Total time taken $measureTimeInMillis".println()
+
+}
+
+fun rotateImage(array: Array<IntArray>) {
 
 }
 
@@ -25,7 +22,13 @@ fun combinationSum2(candidates: IntArray, target: Int): List<List<Int>> {
     return mainList
 }
 
-fun findCombination(candidates: IntArray, target: Int, start: Int, mainList: ArrayList<ArrayList<Int>>, temp: ArrayList<Int>) {
+fun findCombination(
+    candidates: IntArray,
+    target: Int,
+    start: Int,
+    mainList: ArrayList<ArrayList<Int>>,
+    temp: ArrayList<Int>
+) {
     if (target < 0) {
         return
     } else if (target == 0) {

@@ -121,6 +121,7 @@ fun mergeKSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l1 = l1.next
                     ListNode(l1Val).apply { next = ListNode(l2Val) }
                 }
+
                 else -> {
                     l2 = l2.next
                     sortedListNode.next = ListNode(l1Val).apply { next = ListNode(l2Val) }
@@ -137,6 +138,7 @@ fun mergeKSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l1 = l1.next
                     ListNode(l1Val)
                 }
+
                 else -> {
                     l1 = l1.next
                     sortedListNode.next = ListNode(l1Val)
@@ -152,6 +154,7 @@ fun mergeKSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l2 = l2.next
                     ListNode(l2Val)
                 }
+
                 else -> {
                     l2 = l2.next
                     sortedListNode.next = ListNode(l2Val)

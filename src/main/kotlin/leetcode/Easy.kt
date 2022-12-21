@@ -1,7 +1,7 @@
 package leetcode
 
 fun main() {
-    val intArray = intArrayOf(3,2,2,3)
+    val intArray = intArrayOf(3, 2, 2, 3)
     "Size is: ${intArray.size}".println()
     removeElement(intArray, 3).println()
 }
@@ -89,7 +89,6 @@ fun searchInsert(nums: IntArray, target: Int): Int {
     }
     return i
 }
-
 
 
 fun removeDuplicates(nums: IntArray): Int {

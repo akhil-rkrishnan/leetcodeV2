@@ -17,7 +17,7 @@ fun printParanthesis(n: Int) {
     val charArray = CharArray(2 * n)
     var arrayList = ArrayList<String>()
     if (n > 0)
-       arrayList =  _printParenthesis(arrayList, charArray, 0,n,0,0)
+        arrayList = _printParenthesis(arrayList, charArray, 0, n, 0, 0)
     "The final list is ${arrayList.toList()}".print()
     return
 }
@@ -36,14 +36,16 @@ fun _printParenthesis(
     } else {
         if (open > close) {
             str[pos] = ')'
-            _printParenthesis(arrayList,
+            _printParenthesis(
+                arrayList,
                 str, pos + 1, n, open,
                 close + 1
             )
         }
         if (open < n) {
             str[pos] = '('
-            _printParenthesis(arrayList,
+            _printParenthesis(
+                arrayList,
                 str, pos + 1, n, open + 1,
                 close
             )
@@ -75,6 +77,7 @@ fun mergeSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l1 = l1.next
                     ListNode(l1Val).apply { next = ListNode(l2Val) }
                 }
+
                 else -> {
                     l2 = l2.next
                     sortedListNode.next = ListNode(l1Val).apply { next = ListNode(l2Val) }
@@ -91,6 +94,7 @@ fun mergeSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l1 = l1.next
                     ListNode(l1Val)
                 }
+
                 else -> {
                     l1 = l1.next
                     sortedListNode.next = ListNode(l1Val)
@@ -106,6 +110,7 @@ fun mergeSortedList(list1: ListNode?, list2: ListNode?): ListNode? {
                     l2 = l2.next
                     ListNode(l2Val)
                 }
+
                 else -> {
                     l2 = l2.next
                     sortedListNode.next = ListNode(l2Val)
@@ -160,11 +165,13 @@ fun balanceParanthesis(p: String): Boolean {
                 if (pop == '(' || pop == '[')
                     return false
             }
+
             ')' -> {
                 val pop = deque.pop()
                 if (pop == '{' || pop == '[')
                     return false
             }
+
             ']' -> {
                 val pop = deque.pop()
                 if (pop == '{' || pop == '(')
@@ -178,8 +185,6 @@ fun balanceParanthesis(p: String): Boolean {
 fun Char.isOpenBracket(): Boolean {
     return (this == '{' || this == '[' || this == '(')
 }
-
-
 
 
 fun removeNthNodeOfLinkedList(): ListNode? {
@@ -921,6 +926,7 @@ fun Double?.asExperience(emptyQualifier: String = ""): String = if (this == null
                 1 -> {
                     splittedExperience = "1 year "
                 }
+
                 else -> {
                     splittedExperience = "$it years "
                 }
@@ -931,9 +937,11 @@ fun Double?.asExperience(emptyQualifier: String = ""): String = if (this == null
                 0 -> {
 
                 }
+
                 1 -> {
                     splittedExperience += "1 month"
                 }
+
                 else -> {
                     splittedExperience += "$it months"
                 }
@@ -945,9 +953,11 @@ fun Double?.asExperience(emptyQualifier: String = ""): String = if (this == null
                 0 -> {
                     "No experience"
                 }
+
                 1 -> {
                     "1 year"
                 }
+
                 else -> {
                     "$it years"
                 }

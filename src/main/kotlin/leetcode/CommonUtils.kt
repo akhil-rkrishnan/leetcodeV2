@@ -20,7 +20,7 @@ fun ListNode?.traverseLinkedList() {
     var node = this
     while (node != null) {
         "${node.`val`}".print()
-        if (node.next != null)  {
+        if (node.next != null) {
             " -> ".print()
         }
         node = node.next
