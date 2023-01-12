@@ -6,14 +6,41 @@ import kotlin.system.measureTimeMillis
 fun main() {
     val measureTimeInMillis = measureTimeMillis {
         //rotateImage()
+        searchRange(intArrayOf(5,7,7,7,7,7,8), 7)
     }
     "Total time taken $measureTimeInMillis".println()
-
 }
 
 fun rotateImage(array: Array<IntArray>) {
 
 }
+
+
+fun searchRange(nums: IntArray, target: Int): IntArray {
+    val resultArray = IntArray(2).apply { this[0] = -1; this[1] = -1 }
+    if (nums.isEmpty() || nums.last() < target)
+        return intArrayOf(-1, -1)
+
+    if (nums.size == 1) {
+        if (nums.first() == target) {
+            return intArrayOf(0,0)
+        }
+    }
+    var i = 0
+    while (i < nums.size && nums[i] <= target) {
+        if (nums[i] == target) {
+            if (resultArray[0] == -1) {
+                resultArray[0] = i
+            }
+            if (resultArray[1] < i) {
+                resultArray[1] = i
+            }
+        }
+        i++
+    }
+    return resultArray
+}
+
 
 fun combinationSum2(candidates: IntArray, target: Int): List<List<Int>> {
     val mainList = arrayListOf<ArrayList<Int>>()
@@ -52,7 +79,7 @@ fun multiply(num1: String, num2: String): String {
     return multiply.toString()
 }
 
-fun searchRange(nums: IntArray, target: Int): IntArray {
+fun searchRangeIn(nums: IntArray, target: Int): IntArray {
     val list = arrayListOf<Int>()
     if (nums.isEmpty()) {
         return intArrayOf(-1, -1)

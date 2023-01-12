@@ -5,7 +5,17 @@ import kotlin.random.nextInt
 
 
 fun main() {
-    mergeKSortList()
+    val combinationLists = permutationOfAllStrings(0, "foo", "", arrayOf("bar", "foo", "the"))
+    combinationLists.println()
+    val list = arrayListOf<Int>()
+    val s = "barfoofoobarthefoobarman"
+    combinationLists.forEach {
+        val index = s.indexOf(it)
+        if (index != -1) {
+            list.add(index)
+        }
+    }
+    list.toList().println()
 }
 
 fun findSubstring(s: String, words: Array<String>): List<Int> {
@@ -16,18 +26,23 @@ fun findSubstring(s: String, words: Array<String>): List<Int> {
 
 }
 
-fun Array<String>.permutationOfAllStrings(): List<String> {
-    var string = ""
-    var combineList = ArrayList<String>()
-    for (i in 0 until this.size) {
-        string = this[i]
-        for (j in 0 until this.size) {
-            if (i != j) {
-                string += this[j]
-            }
-        }
-        combineList.add(string)
+fun permutationOfAllStrings(
+    startIndex: Int,
+    string: String = "",
+    lastString: String,
+    words: Array<String>,
+    combineList: ArrayList<String> = ArrayList()
+): List<String> {
+    var newString = string
+
+    words.forEachIndexed { index, s ->
+        newString += s
+        permutationOfAllStrings(startIndex + 1, newString, s, words.sliceArray(startIndex until words.size), combineList)
     }
+
+
+    combineList.add(newString)
+
     return combineList
 }
 

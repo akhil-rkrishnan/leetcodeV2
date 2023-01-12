@@ -1,27 +1,21 @@
-package iv;
+package interview.company.cnh;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+
 
 public class Student {
     String name;
     int marks;
+
+    static ArrayList<Student> students;
 
     Student(String name, int marks) {
         this.name = name;
         this.marks = marks;
     }
 
-}
-
-class MainMethod {
-    static ArrayList<Student> students;
-
-    public static void main(String[] args) {
-       // students = new ArrayList<>();
-        insertStudents();
-    }
-
-    static void insertStudents() {
+    void insertStudents() {
         students = new ArrayList<>();
         Student student1 = new Student("Rahul", 50);
         Student student2 = new Student("Abhinav", 45);
@@ -36,24 +30,36 @@ class MainMethod {
         sortListByName();
     }
 
-    static void sortListByName() {
+    void sortListByName() {
         Comparator<Student> c = Comparator.comparing(student -> student.name);
         students.sort(c);
-        for (Student s: students) {
+        for (Student s : students) {
             println(s.name + " :: " + s.marks);
         }
         println("--------------");
         Comparator<Student> c1 = Comparator.comparing(student -> student.marks);
         students.sort(c1);
 
-        for (Student s: students) {
+        for (Student s : students) {
             println(s.name + " :: " + s.marks);
         }
 
     }
-
-   static void println(String message) {
+    void println(String message) {
         System.out.println(message);
     }
 }
+
+
+
+class MainMethod {
+
+    public static void main(String[] args) {
+        // students = new ArrayList<>();
+        new Student("", 0).insertStudents();
+    }
+
+}
+
+
 
