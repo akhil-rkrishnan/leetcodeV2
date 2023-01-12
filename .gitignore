@@ -1,2 +1,3 @@
 /.idea/uiDesigner.xml
 *.class
+/out/production/Leetcode/META-INF/Leetcode.kotlin_module
