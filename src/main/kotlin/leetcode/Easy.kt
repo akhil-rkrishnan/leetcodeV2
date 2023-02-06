@@ -1,10 +1,26 @@
 package leetcode
 
 fun main() {
-    val intArray = intArrayOf(3, 2, 2, 3)
-    "Size is: ${intArray.size}".println()
-    removeElement(intArray, 3).println()
+    lengthOfLastWord("luffy is still jy     ").println()
 }
+
+fun lengthOfLastWord(s: String): Int {
+    if (s.length == 1)
+        return 1
+    var end = s.length - 1
+    var count = 0
+    while (end >= 0) {
+        if (s[end] != ' ') {
+            count++
+        }
+        if (count != 0 && s[end] == ' ') {
+            break
+        }
+        end--
+    }
+    return count
+}
+
 
 fun removeElement(nums: IntArray, `val`: Int): Int {
     val size = nums.size
